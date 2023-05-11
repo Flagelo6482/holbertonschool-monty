@@ -17,6 +17,7 @@ int error_argc(void)
 
 /**
  * open_error - Open error message
+ *@file_name: Name of file
  *
  *Return: EXIT_FAILURE
  */
