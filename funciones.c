@@ -66,3 +66,78 @@ void pint(unsigned int line_number)
     }
     printf("%d\n", stack->n);
 }
+
+/**
+ * pop - Removes the top element of the stack.
+ * @line_number: The line number of the pop instruction.
+ */
+void pop(unsigned int line_number)
+{
+    stack_t *temp;
+
+    if (stack == NULL)
+    {
+        fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+        free_stack();
+        exit(EXIT_FAILURE);
+    }
+
+    temp = stack;
+    stack = stack->next;
+    free(temp);
+}
+
+/**
+ * swap - Swaps the top two elements of the stack.
+ * @line_number: The line number of the swap instruction.
+ */
+void swap(unsigned int line_number)
+{
+    int temp;
+
+    if (stack == NULL || stack->next == NULL)
+    {
+        fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+        free_stack();
+        exit(EXIT_FAILURE);
+    }
+
+    temp = stack->n;
+    stack->n = stack->next->n;
+    stack->next->n = temp;
+}
+
+/**
+ * add - Adds the top two elements of the stack.
+ * @line_number: The line number of the add instruction.
+ */
+void add(unsigned int line_number)
+{
+    int sum;
+
+    if (stack == NULL || stack->next == NULL)
+    {
+        fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+        free_stack();
+        exit(EXIT_FAILURE);
+    }
+
+    sum = stack->n + stack->next->n;
+    pop(line_number);
+    stack->n = sum;
+}
+
+/**
+ * nop - Doesn't do anything.
+ * @line_number: The line number of the nop instruction.
+ */
+void nop(unsigned int line_number)
+{
+    (void)line_number;
+}
+
+/**
+ * free_stack - Frees a stack_t stack.
+ */
+void free_stack(void)
+{
