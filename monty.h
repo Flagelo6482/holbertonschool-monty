@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+#define STACK 0
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,9 +37,14 @@ typedef struct instruction_s
 } instruction_t;
 
 
-/*ERROR MESSAGES*/
+/*PRIMARY FUNCTIONS - stack.c */
+
+int stack_created(stack_t **stack);
+
+/*ERROR MESSAGES - errors.c*/
 
 int error_argc(void);
 int open_error(char *file_name);
+int error_malloc(void);
 
 #endif
