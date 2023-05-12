@@ -1,8 +1,5 @@
 #include "monty.h"
 
-int error_argc(void);
-
-
 /**
  * error_argc - Print an error message
  *
@@ -25,5 +22,17 @@ int error_argc(void)
 int open_error(char *file_name)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", file_name);
+	return (EXIT_FAILURE);
+}
+
+/**
+ * error_malloc - Failed malloc
+ *
+ *Return EXIT_FAILURE
+ */
+
+int error_malloc(void)
+{
+	fprintf(stderr, "Error: malloc failed\n");
 	return (EXIT_FAILURE);
 }
