@@ -46,6 +46,11 @@ int stack_created(stack_t **stack);
 int error_argc(void);
 int open_error(char *file_name);
 int error_malloc(void);
+int unknown_op_error(char *opcode, unsigned int line_number);
+int no_int_error(unsigned int line_number);
+int pop_error(unsigned int line_number);
+int div_error(unsigned int line_number);
+int pint_error(unsigned int line_number);
 
 /* OPCODE FUNCTIONS - opcodes.c */
 
