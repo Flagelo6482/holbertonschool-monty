@@ -26,12 +26,11 @@ int open_error(char *file_name)
 }
 
 /**
- * error_malloc - Failed malloc
+ * malloc_error - Prints malloc error messages.
  *
- *Return EXIT_FAILURE
+ * Return: (EXIT_FAILURE) always.
  */
-
-int error_malloc(void)
+int malloc_error(void)
 {
 	fprintf(stderr, "Error: malloc failed\n");
 	return (EXIT_FAILURE);
