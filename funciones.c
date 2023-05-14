@@ -1,50 +1,41 @@
 #include "monty.h"
-/**
-  * push - this function add elements on the stack
-  * @stack: double linked list of a stack
-  * @line_number: line number
-  * Return: nothing
-  */
+
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *valor = strtok(NULL, " \n");
 	stack_t *nuevo;
 	int i;
 
-	if (valor)
+	if (!valor)
 	{
-		for (i = 0; valor[i]; i++)
-		{
-			if ((valor[i] >= 48 && valor[i] <= 57) || valor[i] == '-')
-			{
-				continue;
-			}
-			else
-			{
-				free_stack(*stack);
-				fprintf(stderr, "L%u: usage: push integer\n", line_number);
-				exit(EXIT_FAILURE);
-			}
-		}
-	}
-	if (valor == NULL)
-	{
-		free_stack(*stack);
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	nuevo = malloc(sizeof(stack_t));
-	if (nuevo == NULL)
+
+	for (i = 0; valor[i]; i++)
 	{
+		if ((valor[i] >= '0' && valor[i] <= '9') || (i == 0 && valor[i] == '-'))
+			continue;
+
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	nuevo = malloc(sizeof(stack_t));
+	if (!nuevo)
+	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+
 	nuevo->n = atoi(valor);
 	nuevo->prev = NULL;
 	nuevo->next = *stack;
+
 	if (*stack)
 		(*stack)->prev = nuevo;
+
 	*stack = nuevo;
 }
 
@@ -123,7 +114,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = temp;
 }
-
 
 /**
   * add - adds the top two elements of the stack
