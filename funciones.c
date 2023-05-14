@@ -1,5 +1,4 @@
 #include "monty.h"
-
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *valor = strtok(NULL, " \n");
