@@ -39,10 +39,9 @@ typedef struct instruction_s
 
 /*PRIMARY FUNCTIONS - stack.c */
 
-int stack_created(stack_t **stack);
+void free_stack(stack_t *stack);
 
 /*ERROR MESSAGES - errors.c*/
-
 int error_argc(void);
 int open_error(char *file_name);
 int error_malloc(void);
@@ -62,5 +61,5 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-
+extern instruction_t instruc[];
 #endif

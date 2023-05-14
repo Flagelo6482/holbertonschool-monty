@@ -1,27 +1,24 @@
 #include "monty.h"
-
 /**
- * stack_created - Create a stackt_t
- *
- *@stack: Pointer to stack_t
- *
- *Return: EXIT_SUCCESS or EXIT_FAILURE
- */
-
-int stack_created(stack_t **stack)
+  * free_stack - libera las listasa
+  * @stack: list head
+  *
+  * Return: void
+  */
+void free_stack(stack_t *stack)
 {
-	stack_t *head;
+	stack_t *current = stack;
+	stack_t *next;
 
-	head = malloc(sizeof(stack_t));
-
-	if (head == NULL)
-		return (error_malloc());
-
-	head->n = STACK;
-	head->prev = NULL;
-	head->next = NULL;
-
-	*stack = head;
-
-	return (EXIT_SUCCESS);
+	if (stack)
+	{
+		next = stack->next;
+		while (current)
+		{
+			free(current);
+			current = next;
+			if (next)
+				next = next->next;
+		}
+	}
 }
