@@ -1,4 +1,12 @@
 #include "monty.h"
+
+/**
+ * push - Add elements to the stack
+ * @stack: Double pointer to the beginning of the stack
+ * @line_number: Line number of the opcode
+ *
+ * Return: void
+ */
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *valor = strtok(NULL, " \n");
