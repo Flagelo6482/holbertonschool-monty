@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 		}
 		if (instruc[i].opcode == NULL)
 		{
-			fprintf(stderr, "L%u: desconocida instruccion %s\n",  line_number, opcode);
+			fprintf(stderr, "L%u: unknown instruction %s\n",  line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
 		i = 0;
