@@ -30,10 +30,10 @@ int open_error(char *file_name)
  *
  * Return: (EXIT_FAILURE) always.
  */
-int malloc_error(void)
+void malloc_error(void)
 {
 	fprintf(stderr, "Error: malloc failed\n");
-	return (EXIT_FAILURE);
+	exit (EXIT_FAILURE);
 }
 
 /**

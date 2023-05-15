@@ -44,7 +44,7 @@ void free_stack(stack_t *stack);
 /*ERROR MESSAGES - errors.c*/
 int error_argc(void);
 int open_error(char *file_name);
-int error_malloc(void);
+void malloc_error(void);
 int unknown_op_error(char *opcode, unsigned int line_number);
 int no_int_error(unsigned int line_number);
 int pop_error(unsigned int line_number);
