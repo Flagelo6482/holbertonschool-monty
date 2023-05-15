@@ -33,7 +33,7 @@ int open_error(char *file_name)
 void malloc_error(void)
 {
 	fprintf(stderr, "Error: malloc failed\n");
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 /**
